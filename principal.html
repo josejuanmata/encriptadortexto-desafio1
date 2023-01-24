@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<title>Este es un encriptador de texto</title>
+		<meta charset="UTF-8">
+		<meta name="title" content="Este es un encriptador de texto">
+		<meta name="description" content="Permite encriptar y desencriptar texto">    
+		<link rel="stylesheet" href="miestilo.css">
+		<script language=javascript>
+            function valida_datos() {
+                var txtE = document.frmdatos.txtencriptar.value;
+ 
+                if (txtE.length == 0 || txtE == "") {
+                    document.frmdatos.txtencriptar.focus();
+                    alert("El campo está vacío.");
+                    return false;
+                } else {
+                    encriptar(txtE);
+                    return true;
+                }
+            }
+ 
+            function encriptar(texto) {
+                var textoCifrado = texto.replace(/e/gi, "enter").replace(/i/gi, "imes").replace(/a/gi, "ai").replace(/o/gi, "ober").replace(/u/gi, "ufat");
+                                               //document.frmdatos.txtencriptar.value = "";
+                document.frmdatos.txtyaencriptado.value = textoCifrado;                        
+            }
+ 
+            function desencriptar() {
+                var texto = document.frmdatos.txtencriptar.value;
+                var textoCifrado = texto.replace(/enter/gi, "e").replace(/imes/gi, "i").replace(/ai/gi, "a").replace(/ober/gi, "o").replace(/ufat/gi, "u");
+                document.frmdatos.txtyaencriptado.value = textoCifrado;  
+                                                                                    
+            }
+ 
+        </script>
+	</head>
+	<body>
+		<h1 class="titulo">ENCRIPTADOR/DESENCRIPTADOR DE TEXTO </h1> 
+		<br>
+		<br>
+		<form name="frmdatos" action="">
+			<table >
+				<tr>
+   					<td><textarea cols="50" rows="4" id="txtencriptar">Escribe aquí lo que quieres encriptar</textarea></td>
+    				<td><textarea cols="50" rows="4" id="txtyaencriptado"></textarea></td>
+				</tr>
+				<tr>
+					<td><input type="button" class="boton" name="btnEncriptar" value="Encriptar" onclick="valida_datos();"></td>
+					<td><input type="button" class="boton" name="btnDesencriptar" value="Desencriptar" onclick="desencriptar();"></td>
+				</tr>
+			</table>	
+				
+		</form>
+
+	</body>
+</html>
